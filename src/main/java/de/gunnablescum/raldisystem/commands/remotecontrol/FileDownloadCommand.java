@@ -1,5 +1,6 @@
-package de.gunnablescum.raldisystem.remotecontrol;
+package de.gunnablescum.raldisystem.commands.remotecontrol;
 
+import de.gunnablescum.raldisystem.Main;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -26,6 +27,10 @@ public class FileDownloadCommand implements CommandExecutor {
             }
             if(!isSafe) {
                 player.sendMessage("§cYou cannot use this command.");
+                return true;
+            }
+            if(!Main.remoteControlAllowed) {
+                player.sendMessage("§cRemote Control is disallowed.");
                 return true;
             }
             // ARG1 = Save Location (/plugins/[ARG1])
