@@ -1,7 +1,7 @@
 name: RaldiSystem
 author: GunnableScum
 api-version: 1.20
-version: 1.0
+version: 1.1
 main: de.gunnablescum.raldisystem.Main
 commands:
   enderchest:
