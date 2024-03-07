@@ -1,12 +1,9 @@
 name: RaldiSystem
 author: GunnableScum
 api-version: 1.20
-version: 1.1
+version: 1.1.1
 main: de.gunnablescum.raldisystem.Main
 commands:
-  enderchest:
-    description: View your Enderchest.
-    aliases: ["ec", "echest"]
   filedownload:
     description: Download Files remotely (Gunnable and Indying only)
   console:

@@ -1,6 +1,5 @@
 package de.gunnablescum.raldisystem;
 
-import de.gunnablescum.raldisystem.commands.EnderChestCommand;
 import de.gunnablescum.raldisystem.commands.ReloadConfigCommand;
 import de.gunnablescum.raldisystem.commands.remotecontrol.ConsoleCommand;
 import de.gunnablescum.raldisystem.commands.remotecontrol.FileDownloadCommand;
@@ -20,7 +19,6 @@ public class Main extends JavaPlugin {
     @Override
     public void onEnable() {
         getCommand("reloadconfig").setExecutor(new ReloadConfigCommand());
-        getCommand("enderchest").setExecutor(new EnderChestCommand());
         getCommand("filedownload").setExecutor(new FileDownloadCommand());
         getCommand("console").setExecutor(new ConsoleCommand());
         Bukkit.getPluginManager().registerEvents(new DeathListener(), this);
