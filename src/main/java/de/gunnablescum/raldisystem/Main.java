@@ -1,5 +1,6 @@
 package de.gunnablescum.raldisystem;
 
+import de.gunnablescum.raldisystem.commands.ConfigCommand;
 import de.gunnablescum.raldisystem.commands.ReloadConfigCommand;
 import de.gunnablescum.raldisystem.commands.remotecontrol.ConsoleCommand;
 import de.gunnablescum.raldisystem.commands.remotecontrol.FileDownloadCommand;
@@ -13,19 +14,26 @@ import java.io.IOException;
 
 public class Main extends JavaPlugin {
 
-    public static boolean remoteControlAllowed = true;
-    public static double deathBreakFactor = 0.5;
+    public static Main instance;
+    public boolean remoteControlAllowed = true;
+    public double deathBreakFactor = 0.5;
 
     @Override
     public void onEnable() {
+        instance = this;
         getCommand("reloadconfig").setExecutor(new ReloadConfigCommand());
         getCommand("filedownload").setExecutor(new FileDownloadCommand());
         getCommand("console").setExecutor(new ConsoleCommand());
+        getCommand("config").setExecutor(new ConfigCommand());
         Bukkit.getPluginManager().registerEvents(new DeathListener(), this);
         loadConfig();
     }
 
-    public static void loadConfig() {
+    public static Main getInstance() {
+        return instance;
+    }
+
+    public void loadConfig() {
         File file = new File("plugins/RaldiSystem/", "config.yml");
         if(!file.getParentFile().exists()) file.getParentFile().mkdirs();
         if(!file.exists()) {
@@ -47,5 +55,16 @@ public class Main extends JavaPlugin {
         }
         remoteControlAllowed = cfg.getBoolean("RemoteControlAllowed");
         deathBreakFactor = cfg.getDouble("DeathBreakFactor");
+    }
+
+    public void setConfig(String key, Object data) {
+        File file = new File("plugins/RaldiSystem/", "config.yml");
+        YamlConfiguration cfg = YamlConfiguration.loadConfiguration(file);
+        cfg.set(key, data);
+        try {
+            cfg.save(file);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

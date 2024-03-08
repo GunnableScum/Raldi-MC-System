@@ -15,7 +15,7 @@ public class ReloadConfigCommand implements CommandExecutor {
                 return true;
             }
         }
-        Main.loadConfig();
+        Main.getInstance().loadConfig();
         commandSender.sendMessage("§aReload success.");
         return false;
     }

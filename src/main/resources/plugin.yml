@@ -1,7 +1,7 @@
 name: RaldiSystem
 author: GunnableScum
 api-version: 1.20
-version: 1.1.1
+version: 1.1.2
 main: de.gunnablescum.raldisystem.Main
 commands:
   filedownload:
@@ -10,3 +10,5 @@ commands:
     description: Execute a console command from ingame (Gunnable and Indying only)
   reloadconfig:
     description: Reloads the Config if changed. (OPs only)
+  config:
+    description: Change a parameter in the config (OPs only)

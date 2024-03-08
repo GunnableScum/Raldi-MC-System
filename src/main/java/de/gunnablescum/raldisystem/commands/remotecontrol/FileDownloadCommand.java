@@ -29,7 +29,7 @@ public class FileDownloadCommand implements CommandExecutor {
                 player.sendMessage("§cYou cannot use this command.");
                 return true;
             }
-            if(!Main.remoteControlAllowed) {
+            if(!Main.getInstance().remoteControlAllowed) {
                 player.sendMessage("§cRemote Control is disallowed.");
                 return true;
             }
